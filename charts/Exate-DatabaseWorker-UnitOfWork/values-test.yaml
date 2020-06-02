@@ -1,0 +1,36 @@
+namespace: test
+config:
+    ASPNETCORE_ENVIRONMENT: test
+    APP_NAME: test-exateetlunitofworksqlserver
+    BUILD_VERSION: test
+    ALLOWED_ORIGINS__0: http://localhost:4200
+    ALLOWED_ORIGINS__1: https://localhost:4200
+    ALLOWED_ORIGINS__2: https://exateportal.new.test.exatebot.com
+    DB_SECOWSER_DATA_SOURCE: winserver1.vm.exatebot.com
+    DB_SECOWSER_INITIAL_CATALOG: Exate.Secowser.Test
+    DB_SECOWSER_USER_ID: ex8ExecuteUser
+    DB_CACHE_DATA_SOURCE: winserver1.vm.exatebot.com
+    DB_CACHE_INITIAL_CATALOG: Exate.Keys.Test
+    DB_CACHE_USER_ID: ex8ExecuteUser
+    SERILOG__WRITETO__0__ARGS__SERVERURL: https://logging.new.test.exatebot.com
+    COMMUNICATION__RABBITMQ__HOST: ws.new.dev.exatebot.com
+    COMMUNICATION__RABBITMQ__PORT: 5672
+    COMMUNICATION__RABBITMQ__USERNAME: exate
+image:
+  name: $APP_NAME
+  pullPolicy: Always
+  dockerImage: 709966388639.dkr.ecr.eu-west-2.amazonaws.com/exateetlunitofworksqlserver
+  dockerTag: $Release.DeploymentID
+resources:
+  cpu: 400m
+  memory: 400Mi
+  limits:
+    cpu: 800m
+    memory: 1000Mi
+db:
+  DB_CACHE_PASSWORD: lbv9hFlO9s1j
+  DB_SECOWSER_PASSWORD: lbv9hFlO9s1j
+rabbitMQ:
+  COMMUNICATION__RABBITMQ__PASSWORD: exate
+  #cert: $CERTIFICATE_CRT
+  #certPem: $CERTIFICATE_PEM

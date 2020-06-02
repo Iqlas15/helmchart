@@ -1,0 +1,28 @@
+namespace: dev
+config:
+  APP_ENVIRONMENT: dev
+  BUILD_VERSION: dev
+  DB_DATA_SOURCE: winserver1.vm.exatebot.com
+  DB_INITIAL_CATALOG: Exate.Secowser.Dev
+  DB_USER_ID: ex8ExecuteUser
+  SERILOG__WRITETO__0__ARGS__SERVERURL: https://logging.new.dev.exatebot.com
+  COMMUNICATION__RABBITMQ__HOST: ws.new.dev.exatebot.com
+  COMMUNICATION__RABBITMQ__PORT: "5672"
+  COMMUNICATION__RABBITMQ__USERNAME: exate
+image:
+  name: dev-exateetljobsqlserver
+  pullPolicy: Always
+  dockerImage: 709966388639.dkr.ecr.eu-west-2.amazonaws.com/exateetljobsqlserver
+  dockerTag: $Release.DeploymentID
+resources:
+  cpu: 400m
+  memory: 400Mi
+  limits:
+    cpu: 800m
+    memory: 1000Mi
+db:
+  DB_PASSWORD: lbv9hFlO9s1j
+rabbitMQ:
+  COMMUNICATION__RABBITMQ__PASSWORD: exate
+  #cert: $CERTIFICATE_CRT
+  #certPem: $CERTIFICATE_PEM
